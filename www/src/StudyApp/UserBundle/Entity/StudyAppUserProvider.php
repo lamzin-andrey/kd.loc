@@ -47,7 +47,7 @@ class StudyAppUserProvider implements UserProviderInterface
     {
         if (null !== $this->property) {
             $user = $this->repository->findOneBy(array($this->property => $username));
-            if (!$user->getEmailIsVerify()) {
+            if (!$user || !$user->getEmailIsVerify()) {
 				$user = null;
 			}
         } else {
